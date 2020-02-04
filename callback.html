@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Callback</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="box -red">
+    
+  </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <script src="index.js"></script>
+  <script>
+    function getUsers(){
+      $.ajax('https://jsonplaceholder.typicode.com/users', {
+        success: users => {
+          if(users.length > 0){
+            getPosts(users);
+          }
+        },
+        error: error => console.log(error),
+      });
+    }
+    function getPosts(users){
+      $.ajax('https://jsonplaceholder.typicode.com/posts', {
+        success: posts => {
+          if(posts.length > 0){
+            getComments(users, posts);
+          }
+        },
+        error: error => console.log(error),
+      });
+    }
+    function getComments(users, posts){
+      $.ajax('https://jsonplaceholder.typicode.com/comments', {
+        success: comments => {
+          if(comments.length > 0){
+            joinEntities.call(null, users, posts, comments);
+          }
+        },
+        error: error => console.log(error),
+      });
+    }
+    function joinEntities(){
+      let [users, posts, comments] = arguments;
+      posts = posts.map(post => {
+        post.user = users.filter(u => u.id === post.userId).pop();
+        post.comments = comments.filter(c => c.postId === post.id);
+        return post;
+      });
+      console.log(posts);
+      console.log('Trabalho finalizado');
+    }
+    getUsers();
+  </script>
+</body>
+</html>

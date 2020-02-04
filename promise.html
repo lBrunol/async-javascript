@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Promise</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="box -red">
+    
+  </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <script>
+    function getUsers(){
+      return fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(users => {
+          getPosts().then(posts => {
+            getComments().then(comments => {
+              joinEntities.apply(null, [users, posts, comments]);
+            });
+          });
+        })
+        .catch(error => console.log(error));
+
+    }
+    function getPosts(users){
+      return fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(response => response.json())
+        .catch(error => console.log(error));
+    }
+    function getComments(users){
+      return fetch('https://jsonplaceholder.typicode.com/comments')
+        .then(response => response.json())
+        .catch(error => console.log(error));
+    }
+    function joinEntities(){
+      let [users, posts, comments] = arguments;
+      posts = posts.map(post => {
+        post.user = users.filter(u => u.id === post.userId).pop();
+        post.comments = comments.filter(c => c.postId === post.id);
+        return post;
+      });
+      console.log(posts);
+      console.log('Trabalho finalizado');
+    }
+    getUsers();
+  </script>
+</body>
+</html>
