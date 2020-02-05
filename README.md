@@ -8,6 +8,7 @@ https://slides.com/lbrunol/deck/fullscreen
 ## Exemplos:
 - bloqueio-renderizacao.html - demonstra como um código javascript pode bloquear o desenho da página
 - bloqueio-renderizacao-async.html - demonstra a execução de uma função bloqueante dentro de um setTimeout
+- o-que-retorna.html - exemplo do que uma função com código assíncrono retorna
 - callback.html - chamadas assíncronas utilizando ajax e callbacks :smiling_imp:
 - promise.html - chamadas assíncronas utilizando promises :relieved:
 - async-await.html - chamadas assíncronas utilizando async/await :heart:
