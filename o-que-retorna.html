@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Callback</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="box -purple">
+    <h1>Esta função retorna os posts?</h1>
+    <h2>Abra o DevTools para ver o resultado (F12)</h2>
+    <code><pre>function getPosts(){
+      <span class="highlight">fetch('https://jsonplaceholder.typicode.com/posts')</span>
+        .then(response => {
+          <span class="highlight">return response.json()</span>
+        })
+        .catch(error => console.log(error));
+      return [];
+    }
+    getPosts();</pre></code>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <script>
+    function getPosts(){
+      fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(response => {
+          return response.json()
+        })
+        .catch(error => console.log(error));
+      return [];
+    }
+    console.log(getPosts());
+  </script>
+</body>
+</html>

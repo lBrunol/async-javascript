@@ -10,6 +10,9 @@ h1, h2 {
   margin: 0 auto;
   height: 50px;
 }
+code {
+  color: #fff;
+}
 .box {
   display: flex;
   flex-direction: column;
@@ -26,4 +29,8 @@ h1, h2 {
 }
 .box.-purple{
   background-color: #8e44ad;
+}
+.highlight {
+  color: #f1c40f;
+  font-weight: bold;
 }
