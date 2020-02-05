@@ -6,8 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Bloqueio de renderização</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="index.js"></script>
   <script>
+    function bloqueioRenderizacaoAsync(){
+      setTimeout(bloqueioRenderizacao, 1000);
+    }
     bloqueioRenderizacaoAsync();
   </script>
 </head>

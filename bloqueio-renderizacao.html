@@ -6,8 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Bloqueio de renderização</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="index.js"></script>
   <script>
+    function bloqueioRenderizacao(){
+      for(let i = 0; i < 150000; i++){
+        console.log(i);
+      }
+    }
     bloqueioRenderizacao();
   </script>
 </head>
